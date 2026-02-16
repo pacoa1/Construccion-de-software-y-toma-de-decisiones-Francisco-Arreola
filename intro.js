@@ -71,3 +71,29 @@ const vidas = () => {
 }
 
 vidas (); 
+
+//---------------------- arreglos
+const videojuegos = ["Minecraft"];
+
+const jugadores = new Array ();
+
+videojuegos.push("Doom");
+videojuegos[10] = "Zelda";
+
+//arreglos asociativos
+videojuegos["nintendo"] = "Mario Bros"
+
+
+//recorrido tradicional del arreglo
+
+for (let i = 0; i < videojuegos.length; i++) {
+    console.log(videojuegos[i]);
+}
+
+//recorridos alternativos del arreglo
+
+for(let juego in videojuegos) {
+    console.log(juego);
+}
+
+//---------------------- Objetos
