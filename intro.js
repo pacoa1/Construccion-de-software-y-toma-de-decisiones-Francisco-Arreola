@@ -56,3 +56,18 @@ if (ganas_jugar) {
 }
 
 //---------------------- funciones tradicionales
+
+function is_precio() {
+    return precio;
+}
+
+console.log(is_precio());
+
+
+() => {}
+
+const vidas = () => {
+    console.log("Te quedan 3 vidas");
+}
+
+vidas (); 
