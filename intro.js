@@ -26,3 +26,15 @@ function is_precio() {
 }
 
 console.log(is_precio());
+
+// Alcance de las variables
+{
+    var minecraft = "5 estrellas";
+    let halo = "4 estrellas";
+}
+
+//la variable manicraft sigue viviendo fuera del ámbito en el que fue declarada
+console.log(minecraft);
+
+//la línea lanza un error porque la variable halo, murió al terminar el ámbito en el que fue declarada
+console.log(halo);
