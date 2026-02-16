@@ -14,10 +14,22 @@ const halo = document.getElementById("halo");
 
 console.log(halo);
 
-halo.onclick = () => {
-    console.log("click en halo");
+const mostrar_descripcion = () => {
     halo.innerHTML = `<p class='is-size-3'>${videojuego.nombre}</p>
         <p>${videojuego.descripcion}</p>
         <span class="tag">${videojuego.genero[0]}</span>
         `;
+ halo.onclick = mostrar_imagen;
 }
+
+const mostrar_imagen = () => {
+    halo.innerHTML = 
+        `<figure class="image">
+            <img class="is-rounded" src="${videojuego.imagen}}" />
+        </figure>`;
+    halo.onclick = mostrar_descripcion;
+}
+
+mostrar_imagen();
+
+halo.onclick = mostrar_descripcion;
