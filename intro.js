@@ -37,4 +37,22 @@ console.log(is_precio());
 console.log(minecraft);
 
 //la línea lanza un error porque la variable halo, murió al terminar el ámbito en el que fue declarada
-console.log(halo);
+// console.log(halo);
+
+//---------------------------------- alert, prompt, confirm
+
+alert ("Hola gamers!");
+
+const favorito = prompt ("¿Cuál es tu videojuego favorito?");
+
+console.log("Tu juego favortio es: " + favorito);
+
+const ganas_jugar = confirm("¿Tienes ganas de jugar?");
+
+if (ganas_jugar) {
+    console.log("¡A jugar!");
+} else {
+    console.log("¡A comer!");
+}
+
+//---------------------- funciones tradicionales
