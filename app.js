@@ -57,7 +57,7 @@ const videojuegos = [
     nombre: "Gears of war",
     imagen: "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Gears_of_war_cover_art.jpg/250px-Gears_of_war_cover_art.jpg"
   },
-]
+];
 
 const server = http.createServer((request, response) => {
 
@@ -126,6 +126,13 @@ const server = http.createServer((request, response) => {
         request.on('end', () => {
             const string_datos_completos = Buffer.concat(datos_completos).toString();
             console.log(string_datos_completos);
+             const nombre = string_datos_completos.split("&")[0].split("=")[1];
+            const imagen = string_datos_completos.split("&")[1].split("=")[1];
+            const nuevo_juego = {
+              nombre: nombre,
+              imagen: imagen,
+            };
+            videojuegos.push(nuevo_juego);
         });
         
     } else {
