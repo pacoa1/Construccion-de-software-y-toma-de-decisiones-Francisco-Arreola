@@ -80,16 +80,16 @@ const html_index = `
 const html_form = `
 <form>
   <div class="field">
-    <label class="label">Nombre</label>
+    <label for="nombre" class="label">Nombre</label>
     <div class="control">
-      <input class="input" type="text" placeholder="e.g Minecraft">
+      <input id="nombre" class="input" type="text" placeholder="e.g Minecraft">
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Imagen</label>
+    <label for="imagen" class="label">Imagen</label>
     <div class="control">
-      <input class="input" type="text" placeholder="e.g. https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270">
+     <input id="imagen" class="input" type="text" placeholder="e.g. https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270">
     </div>
   </div>
 
