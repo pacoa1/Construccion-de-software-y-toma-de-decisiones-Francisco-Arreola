@@ -1,6 +1,6 @@
 const http = require("http");
 
-const html = `
+const html_header = `
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,63 +18,79 @@ const html = `
       <p class="subtitle">
         My first website with Lalo
       </p>
-         <div class="columns">
-        <div class="column">
-          <div id="halo"></div>
-        </div>
-        <div class="column">
-            Minecraft
-            <figure class="image">
-                <img class="is-rounded" src="https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270" />
-            </figure>
-        </div>    
-        <div class="column">      
-                    <li>Cyberpunk</li>
-                    <li>Doom</li>
-                    <li>Gears of war</li>
-        </div>
-      </div>
+`;
+
+const html_footer = `
     </div>
   </section>
-    <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <h1 class="title">Comandos de git</h1>
-          <ul>
-            <li>git add: Sirve para agregar cambios a la transacción.</li>
-            <li>
-              git commit -m "mensaje en imperativo": Sirve para comprometer 
-              la transacción, es decir, guardar los cambios.
-            </li>
-            <li>git checkout [nombre_rama]: Sirve para cambiarse de rama.</li>
-            <li>
-              git checkout -b [nombre_rama]: Sirve para crear una nueva rama y 
-              cambiarse a esa nueva rama.
-            </li>
-            <li>
-              git push: Sirve para sincronizar los cambios desde mi repositorio 
-              hacia el repositorio remoto.
-            </li>
-            <li>
-              git pull: Sirve para sincronizar los cambios del repositorio remoto 
-              hacia mi repositorio.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-   <script src="js/comportamientos.js"></script>
+  <!--script src="js/comportamientos.js"></script-->
   </body>
-</html>
+  </html>  
+`;
+
+const html_index = `
+    <div class="columns">
+      <div class="column">
+          <div id="halo"></div>
+      </div>
+      <div class="column">
+          Minecraft
+          <figure class="image">
+              <img class="is-rounded" src="https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270" />
+          </figure>
+      </div>    
+      <div class="column">      
+                  <li>Cyberpunk</li>
+                  <li>Doom</li>
+                  <li>Gears of war</li>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title">Comandos de git</h1>
+        <ul>
+          <li>git add: Sirve para agregar cambios a la transacción.</li>
+          <li>
+            git commit -m "mensaje en imperativo": Sirve para comprometer 
+            la transacción, es decir, guardar los cambios.
+          </li>
+          <li>git checkout <strong>[nombre_rama]</strong>: Sirve para cambiarse de rama.</li>
+          <li>
+            git checkout -b [nombre_rama]: Sirve para crear una nueva rama y 
+            cambiarse a esa nueva rama.
+          </li>
+          <li>
+            git push: Sirve para sincronizar los cambios desde mi repositorio 
+            hacia el repositorio remoto.
+          </li>
+          <li>
+            git pull: Sirve para sincronizar los cambios del repositorio remoto 
+            hacia mi repositorio.
+          </li>
+        </ul>
+      </div>
+    </div>  
 `;
 
 const server = http.createServer((request, response) => {
-    console.log(request.url);
-    response.setHeader("Content-Type", "text/html");
-    response.write(html);
-    response.end();
+
+     if (request.url == "/") {
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html_header + html_index + html_footer);
+        response.end();
+    } else if (request.url == "/new") {
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html_header + "Aquí va ir una forma" + html_footer);
+        response.end();
+    } else {
+       response.setHeader('Content-Type', 'text/html');
+        response.write(html_header + "Error 404" + html_footer);
+        response.end();
+    }
 });
 
 server.listen(3000);
