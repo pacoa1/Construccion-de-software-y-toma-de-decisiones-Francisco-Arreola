@@ -29,6 +29,7 @@ const html_footer = `
 `;
 
 const html_index = `
+  <a href="/new"><button class="button is-primary">Nuevo videojuego</button></a>
     <div class="columns">
       <div class="column">
           <div id="halo"></div>
