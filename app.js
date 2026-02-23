@@ -77,6 +77,26 @@ const html_index = `
     </div>  
 `;
 
+const html_form = `
+<form>
+  <div class="field">
+    <label class="label">Nombre</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="e.g Minecraft">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Imagen</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="e.g. https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270">
+    </div>
+  </div>
+
+  <input class="button is-primary" type="submit" value="Guardar">
+</form>
+`;
+
 const server = http.createServer((request, response) => {
 
      if (request.url == "/") {
@@ -85,7 +105,7 @@ const server = http.createServer((request, response) => {
         response.end();
     } else if (request.url == "/new") {
         response.setHeader('Content-Type', 'text/html');
-        response.write(html_header + "Aquí va ir una forma" + html_footer);
+         response.write(html_header + html_form + html_footer);
         response.end();
     } else {
        response.setHeader('Content-Type', 'text/html');
