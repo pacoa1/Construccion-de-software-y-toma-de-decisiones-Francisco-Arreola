@@ -78,7 +78,7 @@ const html_index = `
 `;
 
 const html_form = `
-<form>
+<form action="/new" method="POST">
   <div class="field">
     <label for="nombre" class="label">Nombre</label>
     <div class="control">
@@ -103,10 +103,13 @@ const server = http.createServer((request, response) => {
         response.setHeader('Content-Type', 'text/html');
         response.write(html_header + html_index + html_footer);
         response.end();
-    } else if (request.url == "/new") {
+    } else if (request.url == "/new" && request.method == "GET") {
         response.setHeader('Content-Type', 'text/html');
          response.write(html_header + html_form + html_footer);
+             response.end();
+    } else if (request.url == "/new" && request.method == "POST") {
         response.end();
+        
     } else {
        response.setHeader('Content-Type', 'text/html');
         response.write(html_header + "Error 404" + html_footer);
