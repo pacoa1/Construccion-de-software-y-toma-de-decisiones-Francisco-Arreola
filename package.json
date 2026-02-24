@@ -1,0 +1,27 @@
+{
+  "name": "construccion-de-software-y-toma-de-decisiones-francisco-arreola",
+  "version": "1.0.0",
+  "description": "Proyecto de clase TC2005B",
+  "keywords": [
+    "node",
+    "videojuegos",
+    "express",
+    "js"
+  ],
+  "homepage": "https://github.com/pacoa1/Construccion-de-software-y-toma-de-decisiones-Francisco-Arreola#readme",
+  "bugs": {
+    "url": "https://github.com/pacoa1/Construccion-de-software-y-toma-de-decisiones-Francisco-Arreola/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pacoa1/Construccion-de-software-y-toma-de-decisiones-Francisco-Arreola.git"
+  },
+  "license": "MIT",
+  "author": "Francisco Arreola",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
