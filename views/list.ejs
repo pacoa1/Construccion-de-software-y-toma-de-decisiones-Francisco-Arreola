@@ -1,6 +1,6 @@
-<%- include('includes/_header') %>
+<%- include('includes/_header.ejs') %>
 <a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
-              <div class="columns">`;
+              <div class="columns">
 
         <% for (let juego of videojuegos) { %>
                 <div class="column">
@@ -41,4 +41,4 @@
                   </ul>
                 </div>
               </div>  
-<%- include('includes/_footer') %>
+<%- include('includes/_footer.ejs') %>
