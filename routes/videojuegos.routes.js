@@ -30,7 +30,7 @@ const html_footer = `
 `;
 
 const html_form = `
-<form action="/new" method="POST">
+<form action="/videojuegos/new" method="POST">
   <div class="field">
     <label for="nombre" class="label">Nombre</label>
     <div class="control">
@@ -72,13 +72,13 @@ router.get('/new', (request, response, next) => {
 
 router.post('/new', (request, response, next) => {
     videojuegos.push(request.body);
-    response.send(html_header + html_form + html_footer);
+    response.redirect('/videojuegos');
 });
  
 router.use((request, response, next) => {
     console.log('Otro middleware!');
        let html_index = `
-              <a href="/new"><button class="button is-primary">Nuevo videojuego</button></a>
+              <a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
               <div class="columns">`;
 
         for (let juego of videojuegos) {
