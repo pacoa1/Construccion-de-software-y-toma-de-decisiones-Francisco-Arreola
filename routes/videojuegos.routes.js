@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const videojuegosController = require('../controllers/videojuegos.controller');
+
 const path = require('path');
 
 const videojuegos = [
@@ -14,15 +16,7 @@ const videojuegos = [
   },
 ];
 
-//Middleware
-router.use((request, response, next) => {
-    console.log('Middleware!');
-    next(); //Le permite a la petición avanzar hacia el siguiente middleware
-});
-
-router.get('/new', (request, response, next) => {
-    response.render('new');
-});
+router.get('/new', videojuegosController.get_new);
 
 router.post('/new', (request, response, next) => {
     videojuegos.push(request.body);
