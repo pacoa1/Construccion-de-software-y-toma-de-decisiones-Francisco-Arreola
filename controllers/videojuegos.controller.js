@@ -18,5 +18,6 @@ exports.get_old = (request, response, next) => {
 };
 
 exports.get_list = (request, response, next) => {
+    console.log(request.get('Cookie'));
     response.render('list', {videojuegos: Videojuego.fetchAll()}); //Manda la respuesta
 };
