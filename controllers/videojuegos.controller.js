@@ -9,6 +9,7 @@ exports.get_new = (request, response, next) => {
 exports.post_new = (request, response, next) => {
     const videojuego = new Videojuego(request.body.nombre, request.body.imagen);
     videojuego.save();
+    response.setHeader('Set-Cookie', `ultimo_juego=${videojuego.nombre}; Secure`);
     response.redirect('/videojuegos');
 };
 
