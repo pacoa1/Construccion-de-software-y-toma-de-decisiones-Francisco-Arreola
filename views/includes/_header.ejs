@@ -13,5 +13,7 @@
         Videojuegos
       </h1>
       <p class="subtitle">
-        My first website with <strong>Lalo</strong>!
+      <% if (typeof(username) != "undefined") { %>
+          Hola <strong><%= username %></strong>!
+        <% } %>
       </p>
