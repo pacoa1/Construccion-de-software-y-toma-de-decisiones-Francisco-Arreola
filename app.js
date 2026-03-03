@@ -26,3 +26,5 @@ app.use('/videojuegos', rutasVideojuegos);
 app.use((request, response, next) => {
   response.status(404).send("El videojuego no existe");
 });
+
+app.listen(3000);
