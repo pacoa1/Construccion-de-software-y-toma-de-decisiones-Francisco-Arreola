@@ -23,7 +23,8 @@ exports.get_old = (request, response, next) => {
 };
 
 exports.get_list = (request, response, next) => {
-   Videojuego.fetchAll().then(([rows, fieldData]) => {
+    console.log(request.params.videojuego_id);
+    Videojuego.fetch(request.params.videojuego_id).then(([rows, fieldData]) => {
         return response.render('list', {
             username: request.session.username || '',
             videojuegos: rows,
