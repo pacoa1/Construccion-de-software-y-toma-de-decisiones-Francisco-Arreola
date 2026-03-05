@@ -23,6 +23,10 @@ app.use('/users', rutasUsuarios);
 const rutasVideojuegos = require('./routes/videojuegos.routes');
 app.use('/videojuegos', rutasVideojuegos);
 
+app.use((error, request, response, next) => {
+  response.status(500).send(`Error interno del servidor: ${error.stack}`);
+});
+
 app.use((request, response, next) => {
   response.status(404).send("El videojuego no existe");
 });
