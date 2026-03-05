@@ -10,8 +10,12 @@ exports.get_new = (request, response, next) => {
 
 exports.post_new = (request, response, next) => {
     const videojuego = new Videojuego(request.body.nombre, request.body.imagen);
-    videojuego.save();
-    response.redirect('/videojuegos');
+     videojuego.save().then(() => {
+        return response.redirect('/videojuegos');
+    }).catch((error) => {
+        console.log(error);
+        throw error;
+    });
 };
 
 exports.get_old = (request, response, next) => {
