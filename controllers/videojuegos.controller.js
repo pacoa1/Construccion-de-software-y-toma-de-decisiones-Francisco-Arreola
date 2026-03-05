@@ -19,8 +19,13 @@ exports.get_old = (request, response, next) => {
 };
 
 exports.get_list = (request, response, next) => {
-    response.render('list', {
-        username: request.session.username || '',
-        videojuegos: Videojuego.fetchAll(),
-    }); //Manda la respuesta
+   Videojuego.fetchAll().then(([rows, fieldData]) => {
+        return response.render('list', {
+            username: request.session.username || '',
+            videojuegos: rows,
+        });
+    }).catch((error) => {
+        console.log(error);
+        throw error;
+    });
 };
