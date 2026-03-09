@@ -4,6 +4,7 @@ const path = require('path');
 
 exports.get_new = (request, response, next) => {
       response.render('new', {
+        csrfToken: request.csrfToken(),
         isLoggedIn: request.session.isLoggedIn || '',
         username: request.session.username || '',
     });
