@@ -4,6 +4,7 @@ const path = require('path');
 
 exports.get_new = (request, response, next) => {
       response.render('new', {
+        isLoggedIn: request.session.isLoggedIn || '',
         username: request.session.username || '',
     });
 };
@@ -26,6 +27,7 @@ exports.get_list = (request, response, next) => {
     console.log(request.params.videojuego_id);
     Videojuego.fetch(request.params.videojuego_id).then(([rows, fieldData]) => {
         return response.render('list', {
+            isLoggedIn: request.session.isLoggedIn || '',
             username: request.session.username || '',
             videojuegos: rows,
         });

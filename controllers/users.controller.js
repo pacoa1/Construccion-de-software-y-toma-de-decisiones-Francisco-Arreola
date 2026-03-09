@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 
 exports.get_signup = (request, response, next) => {
     response.render('signup', {
+        isLoggedIn: request.session.isLoggedIn || '',
         username: request.session.username || '',
     });
 };
@@ -22,6 +23,7 @@ exports.get_login = (request, response, next) => {
      const error = request.session.error || '';
     request.session.error = '';
     response.render('login', {
+        isLoggedIn: request.session.isLoggedIn || '',
         error: error, 
         username: request.session.username || '',
     });
