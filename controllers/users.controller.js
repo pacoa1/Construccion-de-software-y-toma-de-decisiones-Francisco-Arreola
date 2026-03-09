@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const bcrypt = require('bcrypt');
 
 exports.get_signup = (request, response, next) => {
     response.render('signup', {
@@ -24,8 +25,30 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.post_login = (request, response, next) => {
-    request.session.username = request.body.username;
-    response.redirect("/videojuegos");
+    User.fetchOne(request.body.username).then(([rows, fieldData]) => {
+        if (rows.length < 1) {
+            return response.redirect('/users/login');
+        } else {
+            bcrypt.compare(request.body.password, rows[0].password).then((doMatch) => {
+                if (doMatch) {
+                    request.session.isLoggedIn = true;
+                    request.session.username = request.body.username;
+                    return request.session.save((error) => {
+                        return response.redirect("/videojuegos");
+                    });
+                } else {
+
+                    return response.redirect('/users/login');
+                }
+            }).catch((error) => {
+                console.log(error);
+                next(error);
+            });
+        }
+    }).catch((error) => {
+        console.log(error);
+        next(error);
+    });
 };
 
 exports.get_logout = (request, response, next) => {

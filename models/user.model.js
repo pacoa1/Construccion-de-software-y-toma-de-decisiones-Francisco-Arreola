@@ -20,8 +20,8 @@ module.exports = class User {
         });
     }
 
-    static fetchOne(id) {
-        
+   static fetchOne(username) {
+        return db.execute("SELECT * FROM users WHERE username=?", [username]);
     }
 
 }
