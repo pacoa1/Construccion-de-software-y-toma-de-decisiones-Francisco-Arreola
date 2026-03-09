@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+const isAuth = require('../util/is-auth');
 const videojuegosController = require('../controllers/videojuegos.controller');
 
-router.get('/new', videojuegosController.get_new);
-router.get('/nuevo', videojuegosController.get_new);
-router.get('/add', videojuegosController.get_new);
-router.post('/new', videojuegosController.post_new);
-router.post('/nuevo', videojuegosController.post_new);
-router.post('/add', videojuegosController.get_new);
-router.get('/old', videojuegosController.get_old);
-router.get('/old_labs', videojuegosController.get_old);
-router.get('/:videojuego_id', videojuegosController.get_list);
-router.use(videojuegosController.get_list);
+router.get('/new', isAuth, videojuegosController.get_new);
+router.get('/nuevo', isAuth, videojuegosController.get_new);
+router.get('/add', isAuth, videojuegosController.get_new);
+router.post('/new', isAuth, videojuegosController.post_new);
+router.post('/nuevo', isAuth, videojuegosController.post_new);
+router.post('/add', isAuth, videojuegosController.get_new);
+router.get('/old', isAuth, videojuegosController.get_old);
+router.get('/old_labs', isAuth, videojuegosController.get_old);
+router.get('/:videojuego_id', isAuth, videojuegosController.get_list);
+router.use(isAuth, videojuegosController.get_list);
 
 module.exports = router;
