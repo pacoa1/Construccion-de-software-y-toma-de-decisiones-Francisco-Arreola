@@ -1,5 +1,13 @@
+exports.get_signup = (request, response, next) => {
+    response.render('signup', {
+        username: request.session.username || '',
+    });
+};
+
 exports.get_login = (request, response, next) => {
-    response.render('login');
+    response.render('login', {
+        username: request.session.username || '',
+    });
 };
 
 exports.post_login = (request, response, next) => {
