@@ -19,7 +19,10 @@ exports.post_signup = (request, response, next) => {
 };
 
 exports.get_login = (request, response, next) => {
+     const error = request.session.error || '';
+    request.session.error = '';
     response.render('login', {
+        error: error, 
         username: request.session.username || '',
     });
 };
@@ -27,6 +30,7 @@ exports.get_login = (request, response, next) => {
 exports.post_login = (request, response, next) => {
     User.fetchOne(request.body.username).then(([rows, fieldData]) => {
         if (rows.length < 1) {
+            request.session.error = 'Usuario y/o password no coinciden';
             return response.redirect('/users/login');
         } else {
             bcrypt.compare(request.body.password, rows[0].password).then((doMatch) => {
@@ -37,7 +41,7 @@ exports.post_login = (request, response, next) => {
                         return response.redirect("/videojuegos");
                     });
                 } else {
-
+                    request.session.error = 'Usuario y/o password no coinciden';
                     return response.redirect('/users/login');
                 }
             }).catch((error) => {

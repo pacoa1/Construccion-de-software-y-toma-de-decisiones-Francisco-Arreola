@@ -1,4 +1,12 @@
 <%- include('includes/_header') %>
+
+<% if(error != '') { %>
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        <%= error %>
+    </div>
+<% } %>
+
 <form action="/users/login" method="POST">
     <div class="field">
         <label for="username" class="label">Username</label>
