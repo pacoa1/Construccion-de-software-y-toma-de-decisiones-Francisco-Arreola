@@ -4,6 +4,13 @@ exports.get_signup = (request, response, next) => {
     });
 };
 
+exports.post_signup = (request, response, next) => {
+    
+    response.redirect('/users/login', {
+        username: request.session.username || '',
+    });
+};
+
 exports.get_login = (request, response, next) => {
     response.render('login', {
         username: request.session.username || '',

@@ -28,6 +28,23 @@
         </div>
     </div>
 
+    <div id="dont_match" class="notification is-warning" style="display:none;">
+        <button class="delete"></button>
+        Las contraseñas no coinciden
+    </div>
+
     <input class="button is-primary" type="submit" value="Guardar">
 </form>
+<script>
+    const password_confirm = document.getElementById('password_confirm');
+    const password = document.getElementById('password');
+    const dont_match = document.getElementById('dont_match');
+    password_confirm.onkeyup = () => {
+        if(password_confirm.value != password.value) {
+            dont_match.style.display = "block";
+        } else {
+            dont_match.style.display = "none";
+        }
+    }
+</script>
 <%- include('includes/_footer') %>
