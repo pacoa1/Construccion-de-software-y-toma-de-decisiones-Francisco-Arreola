@@ -1,3 +1,5 @@
+const User = require("../models/user.model");
+
 exports.get_signup = (request, response, next) => {
     response.render('signup', {
         username: request.session.username || '',
@@ -5,10 +7,14 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
-    
-    response.redirect('/users/login', {
-        username: request.session.username || '',
+    const usuario = new User(request.body.username, request.body.password, request.body.nombre);
+    usuario.save().then(() => {
+        return response.redirect('/users/login');
+    }).catch((error) => {
+        console.log(error);
+        next(error);
     });
+    
 };
 
 exports.get_login = (request, response, next) => {
