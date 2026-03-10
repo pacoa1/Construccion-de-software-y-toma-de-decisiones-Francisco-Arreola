@@ -10,8 +10,8 @@
 
         <% for (let juego of videojuegos) { %>
                 <div class="column">
-                    <%= juego.nombre %>
-                    <figure class="image">
+                    <%= juego.nombre %> <br>
+                    <span class="tag"><%= juego.tipo %></span>
                         <img class="is-rounded" src="<%= juego.imagen %>" />
                     </figure>
                 </div>
