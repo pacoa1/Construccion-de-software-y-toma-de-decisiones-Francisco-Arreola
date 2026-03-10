@@ -28,6 +28,7 @@ exports.get_list = (request, response, next) => {
     console.log(request.session.privilegios);
     Videojuego.fetch(request.params.videojuego_id).then(([rows, fieldData]) => {
         return response.render('list', {
+            privilegios: request.session.privilegios || [],
             isLoggedIn: request.session.isLoggedIn || '',
             username: request.session.username || '',
             videojuegos: rows,

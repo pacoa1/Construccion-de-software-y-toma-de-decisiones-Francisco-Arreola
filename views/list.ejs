@@ -1,5 +1,11 @@
 <%- include('includes/_header.ejs') %>
-<a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
+
+<% for (let privilegio of privilegios) { %>
+  <% if (privilegio.privilegio == 'crear_videojuegos') { %>
+    <a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
+  <% } %>
+<% } %>
+
               <div class="columns">
 
         <% for (let juego of videojuegos) { %>
