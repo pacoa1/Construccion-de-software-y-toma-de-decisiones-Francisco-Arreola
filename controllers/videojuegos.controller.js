@@ -25,7 +25,7 @@ exports.get_old = (request, response, next) => {
 };
 
 exports.get_list = (request, response, next) => {
-    console.log(request.params.videojuego_id);
+    console.log(request.session.privilegios);
     Videojuego.fetch(request.params.videojuego_id).then(([rows, fieldData]) => {
         return response.render('list', {
             isLoggedIn: request.session.isLoggedIn || '',
