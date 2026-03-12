@@ -1,4 +1,9 @@
-<form action="/videojuegos/new" method="POST">
+<% if(editar) { %>
+  <form action="/videojuegos/edit" method="POST">
+    <input type="hidden" name="id" value="<%= videojuego.id %>">
+<% } else  { %>
+  <form action="/videojuegos/new" method="POST">
+<% } %>
   <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
   <div class="field">
     <label for="nombre" class="label">Nombre</label>
