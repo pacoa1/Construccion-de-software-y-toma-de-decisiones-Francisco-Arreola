@@ -22,7 +22,7 @@ module.exports = class Videojuego {
     }
 
     static fetchOne(id) {
-       return db.execute('SELECT v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id AND id = ?', [id]);
+        return db.execute('SELECT v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id AND v.id = ?', [id]);
     }
 
     static fetch(id) {
