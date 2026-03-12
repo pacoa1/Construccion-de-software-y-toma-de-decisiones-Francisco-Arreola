@@ -37,4 +37,11 @@ module.exports = class Videojuego {
         return db.execute("SELECT * FROM tipo");
     }
 
+    static edit(id, nombre, imagen, tipo) {
+        return db.execute(
+            `UPDATE videojuegos SET nombre=?, imagen=?, id_tipo=? WHERE id=?`,
+            [nombre, imagen, tipo, id]
+        );
+    }
+
 }

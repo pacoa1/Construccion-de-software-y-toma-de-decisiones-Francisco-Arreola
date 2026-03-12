@@ -68,3 +68,13 @@ exports.get_edit = (request, response, next) => {
         next(error);
     });
 };
+
+exports.post_edit = (request, response, next) => {
+    Videojuego.edit(request.body.id, request.body.nombre, request.body.imagen, request.body.tipo)
+        .then(() => {
+            return response.redirect(`/videojuegos/${request.body.id}`);
+        }).catch((error) => {
+            console.log(error);
+            next(error);
+        });
+};

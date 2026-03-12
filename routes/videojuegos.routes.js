@@ -14,7 +14,7 @@ router.post('/nuevo', isAuth, canCreate, videojuegosController.post_new);
 router.post('/add', isAuth, canCreate, videojuegosController.get_new);
 router.get('/old', isAuth, videojuegosController.get_old);
 router.get('/old_labs', isAuth, videojuegosController.get_old);
-router.post('/edit', isAuth, canCreate);
+router.post('/edit', isAuth, canCreate, videojuegosController.post_edit);
 router.get('/:videojuego_id/edit', isAuth, canCreate, videojuegosController.get_edit);
 router.get('/:videojuego_id', isAuth, canView, videojuegosController.get_list);
 router.use(isAuth, canView, videojuegosController.get_list);
