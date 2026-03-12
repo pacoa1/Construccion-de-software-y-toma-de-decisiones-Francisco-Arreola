@@ -18,11 +18,11 @@ module.exports = class Videojuego {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-       return db.execute('SELECT v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id');
+         return db.execute('SELECT v.id as id, v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id');
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id AND v.id = ?', [id]);
+        return db.execute('SELECT v.id as id, v.nombre as nombre, v.imagen, t.nombre as tipo FROM videojuegos v, tipo t WHERE v.id_tipo=t.id AND v.id = ?', [id]);
     }
 
     static fetch(id) {
