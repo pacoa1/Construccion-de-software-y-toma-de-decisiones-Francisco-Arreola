@@ -18,12 +18,12 @@ exports.get_new = (request, response, next) => {
 };
 
 exports.post_new = (request, response, next) => {
-    const videojuego = new Videojuego(request.body.nombre, request.body.imagen, request.body.tipo);
+    const videojuego = new Videojuego(request.body.nombre, request.file.filename, request.body.tipo);
      videojuego.save().then(() => {
         return response.redirect('/videojuegos');
     }).catch((error) => {
         console.log(error);
-        tnext(error);
+        next(error);
     });
 };
 
