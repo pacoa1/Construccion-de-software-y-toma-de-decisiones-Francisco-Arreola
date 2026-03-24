@@ -6,6 +6,7 @@ const canView = require('../util/can-view');
 const canCreate = require('../util/can-create');
 const videojuegosController = require('../controllers/videojuegos.controller');
 
+router.get('/buscar/:videojuego', isAuth, canView, videojuegosController.get_buscar);
 router.get('/new', isAuth, canCreate, videojuegosController.get_new);
 router.get('/nuevo', isAuth, canCreate, videojuegosController.get_new);
 router.get('/add', isAuth, canCreate, videojuegosController.get_new);

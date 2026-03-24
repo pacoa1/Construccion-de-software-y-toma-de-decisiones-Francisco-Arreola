@@ -47,6 +47,10 @@ exports.get_list = (request, response, next) => {
     
 };
 
+exports.get_buscar = (request, response, next) => {
+    response.status(200).json({message: "Respuesta asíncrona"});
+}
+
 exports.get_edit = (request, response, next) => {
     Videojuego.getTipos().then(([tipos, fieldData]) => {
         Videojuego.fetchOne(request.params.videojuego_id).then(([videojuegos, fieldData]) => {
