@@ -1,5 +1,14 @@
 <%- include('includes/_header.ejs') %>
 
+<label for="buscar">Buscar</label>
+<input
+  class="input is-primary"
+  type="text"
+  id="buscar"
+  placeholder="Minecr..."
+/>
+<br><br>
+
 <% for (let privilegio of privilegios) { %>
   <% if (privilegio.privilegio == 'crear_videojuegos') { %>
     <a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
@@ -54,4 +63,13 @@
                   </ul>
                 </div>
               </div>  
+  
+  
+<script>
+  const buscar = document.getElementById("buscar");
+  buscar.onkeyup = () => {
+    console.log("on key up");
+  }
+</script>
+
 <%- include('includes/_footer.ejs') %>
