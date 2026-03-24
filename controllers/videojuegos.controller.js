@@ -48,7 +48,12 @@ exports.get_list = (request, response, next) => {
 };
 
 exports.get_buscar = (request, response, next) => {
-    response.status(200).json({message: "Respuesta asíncrona"});
+    Videojuego.buscar(request.params.videojuego).then(() => {
+        return response.status(200).json({message: "Respuesta asíncrona"});
+    }).catch((error) => {
+        console.log(error);
+        return response.status(500).json({message: error.stack});
+    });
 }
 
 exports.get_edit = (request, response, next) => {
