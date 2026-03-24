@@ -47,7 +47,9 @@ module.exports = class Videojuego {
        static buscar(nombre) {
         return db.execute(`
             SELECT v.id as id, v.nombre as nombre, v.imagen, t.nombre as tipo 
-            FROM videojuegos v, tipo t WHERE v.id_tipo=t.id`
+            FROM videojuegos v, tipo t 
+            WHERE v.id_tipo=t.id AND (v.nombre LIKE ? OR t.nombre LIKE ?); `,
+            ['%' + nombre + '%', '%' + nombre + '%']
         );
     }
 
